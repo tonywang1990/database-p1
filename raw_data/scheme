@@ -1,0 +1,13 @@
+create table basic (P_id int, name varchar(100), dept varchar(100), title varchar(50), office varchar(50), phone varchar(20), email varchar(50), photo varchar(200));
+LOAD DATA LOCAL INFILE 'basic.txt' INTO TABLE basic;
+
+create table research(A_id int, name varchar(50), area varchar(200));
+LOAD DATA LOCAL INFILE 'reserach.txt' INTO TABLE research;
+
+
+create table publication(P_id int, author varchar(50), paper varchar(500));
+LOAD DATA LOCAL INFILE 'publication.txt' INTO TABLE publication;
+
+create table academic(N_id int, name varchar(50), website varchar(200), resume varchar(200), scholar varchar(200), email varchar(50), education varchar(200));
+LOAD DATA LOCAL INFILE 'academic.txt' INTO TABLE academic;
+
