@@ -1,5 +1,4 @@
 <?php 
-
 /** 
  * @author Ryan Naddy <ryan@ryannaddy.com> 
  * @updated 3/15/2015 
@@ -15,9 +14,10 @@ if(isset($_POST['submit'])){
 	$link = mysql_connect($dbHost, $dbUser, $dbPass, $dbDatabase);
 	if ($link) {
 		session_start(); 
-		$_SESSION['username'] = $row['username']; 
-		$_SESSION['fname']    = $row['first_name']; 
-		$_SESSION['lname']    = $row['last_name']; 
+		$_SESSION['host'] = $dbHost; 
+		$_SESSION['username'] = $dbUser; 
+		$_SESSION['password'] = $dbPass; 
+		$_SESSION['database'] = $dbDatabase; 
 		$_SESSION['logged']   = TRUE; 
 		header("Location: users_page.php"); // Modify to go to the page you would like 
 		exit; 
