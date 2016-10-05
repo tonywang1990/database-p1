@@ -5,6 +5,7 @@
  * @note Feel free to replace the pdo found below with the pdo wrapper 
  * @see http://phpsnips.com/616/PDO-Wrapper 
  */ 
+session_unset();
 if(isset($_POST['submit'])){ 
 	$dbHost     = $_POST['host'];  //Location Of Database usually its localhost 
 	$dbUser     = $_POST['username'];   //Database User Name 
