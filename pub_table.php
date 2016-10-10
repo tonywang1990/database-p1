@@ -59,7 +59,7 @@ for ($i=1; $i<$numberfields-7; $i++ ) {
 $field = mysql_field_name($result, $paper);
 echo '<th>' . htmlspecialchars(ucfirst($field)) . '</th>';
 // edit/delete function
-echo '<th style="width:10%">Operation</th>';
+echo '<th style="width:10%">Action</th>';
 echo '<tr></thead>';
 
 // table content

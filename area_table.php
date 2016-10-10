@@ -58,6 +58,7 @@ for ($i=1; $i<$numberfields-6; $i++ ) {
 // research area
 $field = mysql_field_name($result, $researcharea);
 echo '<th>' . htmlspecialchars(ucfirst($field)) . '</th>';
+echo '<th style="width:10%">Action</th>';
 echo '<tr></thead>';
 
 // table content

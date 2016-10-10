@@ -35,7 +35,21 @@ if(!$_SESSION['logged']){
 </div>
 <div class="w3-third">
 <label class="w3-label">Department</label>
-<input class="w3-input w3-border" type="text" name="dept">
+<select class="w3-select w3-border" type="text" name="dept">
+    <option value="" disabled selected>Choose the department</option>
+    <option value="Electrical">Electrical and Computer Engineering</option>
+    <option value="Computer">Computer Science and Engineering</option>
+    <option value="Material">Material Science and Engineering</option>
+    <option value="Aerospace">Aerospace Engineering</option>
+    <option value="Biomedical">Biomedical Engineering</option>
+    <option value="Chemial">Chemial Engineering</option>
+    <option value="Civil">Civil Engineering</option>
+    <option value="Engineering Technology and Industrial">Engineering Technology and Industrial</option>
+    <option value="Industrial">Industrial and Systems Engineering</option>
+    <option value="Nuclear">Nuclear Engineering</option>
+    <option value="Ocean">Ocean Engineering</option>
+    <option value="Petroleum">Petroleum Engineering</option>
+</select>
 </div>
 <div class="w3-third">
 <label class="w3-label">Title</label>
@@ -43,6 +57,7 @@ if(!$_SESSION['logged']){
 </div>
 <div class="w3-panel w3-padding-1"></div>
 <div align="right">
+<input class="w3-btn w3-lime" type="button" name="insert" value="Add New Professor" onClick="Javascript:window.location.href = 'insert.php';"/>
 <input class="w3-btn w3-green" type="submit" name="basic_search" value="Basic Search">
 </div>
 <div style="padding:5px"></div>
@@ -55,14 +70,28 @@ if(!$_SESSION['logged']){
 <div class="w3-container w3-teal">
 	<h3>Publications</h3>
 </div>
-<form action="users_page.php" method="post" class="w3-row-padding">
+<form action="users_page.php" method="get" class="w3-row-padding">
 <div class="w3-third">
 <label class="w3-label">Author Name</label>
 <input class="w3-input w3-border" type="text" name="name">
 </div>
 <div class="w3-third">
 <label class="w3-label">Department</label>
-<input class="w3-input w3-border" type="text" name="dept">
+<select class="w3-select w3-border" type="text" name="dept">
+    <option value="" disabled selected>Choose the department</option>
+    <option value="Electrical">Electrical and Computer Engineering</option>
+    <option value="Computer">Computer Science and Engineering</option>
+    <option value="Material">Material Science and Engineering</option>
+    <option value="Aerospace">Aerospace Engineering</option>
+    <option value="Biomedical">Biomedical Engineering</option>
+    <option value="Chemial">Chemial Engineering</option>
+    <option value="Civil">Civil Engineering</option>
+    <option value="Engineering Technology and Industrial">Engineering Technology and Industrial</option>
+    <option value="Industrial">Industrial and Systems Engineering</option>
+    <option value="Nuclear">Nuclear Engineering</option>
+    <option value="Ocean">Ocean Engineering</option>
+    <option value="Petroleum">Petroleum Engineering</option>
+</select>
 </div>
 <div class="w3-third">
 <label class="w3-label">Publication Title</label>
@@ -82,14 +111,28 @@ if(!$_SESSION['logged']){
 <div class="w3-container w3-indigo">
 	<h3>Research Area</h3>
 </div>
-<form action="users_page.php" method="post" class="w3-row-padding">
+<form action="users_page.php" method="get" class="w3-row-padding">
 <div class="w3-third">
 <label class="w3-label">Faculty Name</label>
 <input class="w3-input w3-border" type="text" name="name">
 </div>
 <div class="w3-third">
 <label class="w3-label">Department</label>
-<input class="w3-input w3-border" type="text" name="dept">
+<select class="w3-select w3-border" type="text" name="dept">
+    <option value="" disabled selected>Choose the department</option>
+    <option value="Electrical">Electrical and Computer Engineering</option>
+    <option value="Computer">Computer Science and Engineering</option>
+    <option value="Material">Material Science and Engineering</option>
+    <option value="Aerospace">Aerospace Engineering</option>
+    <option value="Biomedical">Biomedical Engineering</option>
+    <option value="Chemial">Chemial Engineering</option>
+    <option value="Civil">Civil Engineering</option>
+    <option value="Engineering Technology and Industrial">Engineering Technology and Industrial</option>
+    <option value="Industrial">Industrial and Systems Engineering</option>
+    <option value="Nuclear">Nuclear Engineering</option>
+    <option value="Ocean">Ocean Engineering</option>
+    <option value="Petroleum">Petroleum Engineering</option>
+</select>
 </div>
 <div class="w3-third">
 <label class="w3-label">Research Area</label>
@@ -114,19 +157,13 @@ if(!$_SESSION['logged']){
 <h2>Search Results</h2>
 </div>
 <?php
-// connect to mysql 
-$link = mysql_connect( $_SESSION['host'], $_SESSION['username'], $_SESSION['password'],$_SESSION['database']);
-// choose tonybest-prof database
-$db_name = 'tonybest-prof';
-$db_selected = mysql_select_db($db_name, $link);
-if (!$db_selected) {
-	die ('Can\'t use db: ' . mysql_error());
-}
 
 //check if the starting row variable was passed in the URL or not
 if (!isset($_GET['startrow']) or !is_numeric($_GET['startrow'])) {
 	//we give the value of the starting row to 0 because nothing was found in URL
 	$startrow = 0;
+	// if new search, reset the session infomation
+	$_SESSION['table_type']="";
 	//otherwise we take the value from the URL
 } else {
 	$startrow = (int)$_GET['startrow'];
@@ -136,12 +173,12 @@ if (!isset($_GET['startrow']) or !is_numeric($_GET['startrow'])) {
 if (isset($_GET['basic_search']) or $_SESSION['table_type'] == "basic"){
 	include 'basic_table.php';
 }
-// basic information search result
-if (isset($_GET['pub_search']) or $_SESSION['table_type'] == "pub"){
+// publication information search result
+if (isset($_GET['pub_search']) or $_SESSION['table_type'] == "publication"){
 	include 'pub_table.php';
 }
-// basic information search result
-if (isset($_GET['area_search']) or $_SESSION['table_type'] == "area"){
+// research area information search result
+if (isset($_GET['area_search']) or $_SESSION['table_type'] == "research"){
 	include 'area_table.php';
 }
 
@@ -160,9 +197,8 @@ else
 	echo '<a class="w3-btn w3-disabled">Next</a>';
 echo '</form>';
 echo '</div>';
-mysql_close($link);
+
 ?>
 </div>
-
 </body>
 </html>

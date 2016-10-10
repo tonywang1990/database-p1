@@ -19,7 +19,6 @@ function renderForm($id, $name, $area, $error)
 <head>
 <title>Edit the Research Information of the Professor</title>
 </head>
-<body>
 
 <?php
 
@@ -30,17 +29,20 @@ if ($error != '')
 }
 ?>
 
+<body style="margin:10%; margin-left:20%; margin-right:20%">
+<div class="w3-card-4 w3-large">
+<div class="w3-container w3-indigo">
+<h2>Edit Research Information</h2>
+</div>
 
-<form action="" method="post" class="w3-container w3-card-4 w3-light-grey">
-<h2>Edit the Research Area Information</h2>
+<form action="" method="post" class="w3-container">
 <input class="w3-input w3-border" type="hidden" name="id" value="<?php echo $id; ?>"/>
 <input class="w3-input w3-border" type="hidden" name="name" value="<?php echo $name; ?>"/>
 
-<div class="w3-third">
-<p><label class="w3-label"><strong>Area ID* :</strong></label>   <?php echo $id; ?></p>
+<p><label class="w3-label"><strong>Area ID:</strong></label>   <?php echo $id; ?></p>
 
 <p>
-<label class="w3-label"><strong>Name* :</strong></label>   <?php echo $name; ?>
+<label class="w3-label"><strong>Name:</strong></label>   <?php echo $name; ?>
 </p>
 
 <p>
@@ -50,11 +52,13 @@ if ($error != '')
 
 <p><strong>* Required</strong></p>
 
-<input class="w3-btn w3-green" type="submit" name="submit" value="Submit">
+<input class="w3-btn-block w3-indigo" type="submit" name="submit" value="Submit">
 
-</div>
 
 </form>
+<div class="w3-panel w3-padding-4"></div>
+
+</div>
 
 </body>
 

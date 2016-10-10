@@ -17,9 +17,8 @@ function renderForm($id, $name, $dept, $title, $office, $phone, $email, $photo, 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <head>
-<title>Edit the Information of the Professor</title>
+<title>Edit Basic Information</title>
 </head>
-<body>
 
 <?php
 
@@ -30,14 +29,16 @@ if ($error != '')
 }
 ?>
 
+<body style="margin:10%; margin-left:20%; margin-right:20%">
+<div class="w3-card-4 w3-large">
+<div class="w3-container w3-light-green">
+<h2>Edit Basic Information</h2>
+</div>
 
-<form action="" method="post" class="w3-container w3-card-4 w3-light-grey">
-<h2>Edit the Information</h2>
+<form action="" method="post" class="w3-container">
 <input class="w3-input w3-border" type="hidden" name="id" value="<?php echo $id; ?>"/>
 <input class="w3-input w3-border" type="hidden" name="name" value="<?php echo $name; ?>"/>
 <input class="w3-input w3-border" type="hidden" name="dept" value="<?php echo $dept; ?>"/>
-
-<div class="w3-third">
 
 <p>
 <label class="w3-label"><strong>ID* :</strong></label>   <?php echo $id; ?>
@@ -112,12 +113,13 @@ if ($error != '')
 
 <p><strong>* Required</strong></p>
 
-<input class="w3-btn w3-green" type="submit" name="submit" value="Submit">
+<input class="w3-btn-block w3-green" type="submit" name="submit" value="Submit">
 
+<div class="w3-panel w3-padding-4"></div>
+</div>
 </div>
 
 </form>
-
 </body>
 
 </html>
