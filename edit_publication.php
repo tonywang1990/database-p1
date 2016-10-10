@@ -46,7 +46,7 @@ if ($error != '')
 
 <p>
 <label class="w3-label"><strong>Publication* :</strong></label>
-<input class="w3-input w3-border" type="text" name="paper" value="<?php echo $paper; ?>"/>
+<input class="w3-input w3-border" type="text" name="paper" value="<?php echo htmlspecialchars($paper); ?>"/>
 </p>
 
 <p><strong>* Required</strong></p>
