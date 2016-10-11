@@ -71,7 +71,6 @@ function renderForm($name, $dept, $title, $office, $phone, $email, $photo, $webs
   }
  </SCRIPT>
 </head>
-<body>
 
 <?php
 
@@ -82,11 +81,15 @@ if ($error != '')
 }
 ?>
 
+<body style="margin:10%; margin-left:20%; margin-right:20%">
+<div class="w3-card-4 w3-large">
+<div class="w3-container w3-lime">
+<h2>New professor</h2>
+</div>
 
 <form action="" method="post" class="w3-container w3-card-4 w3-light-grey">
-<h2>New professor</h2>
 
-<div class="w3-third">
+<div>
 <p>
 <label class="w3-label"><strong>Name: *</strong></label>
 <input class="w3-input w3-border" type="text" name="name" value="<?php echo $name; ?>"/>
@@ -204,7 +207,8 @@ else{
 
 <p><strong>* Required</strong></p>
 
-<input class="w3-btn w3-green" type="submit" name="submit" value="Submit">
+<input class="w3-btn-block w3-lime" type="submit" name="submit" value="Submit">
+<div class="w3-panel w3-padding-4"></div>
 
 </div>
 
